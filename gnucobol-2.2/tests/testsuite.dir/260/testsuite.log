@@ -1,0 +1,12 @@
+#                             -*- compilation -*-
+260. syn_screen.at:412: testing Optional SCREEN for BLANK / ERASE ...
+./syn_screen.at:442: $COMPILE_ONLY prog.cob
+--- /dev/null	2019-06-22 09:26:13.000000000 -0300
++++ /cygdrive/c/OC/gnucobol-2.2/tests/testsuite.dir/at-groups/260/stderr	2019-06-22 09:26:13.956634800 -0300
+@@ -0,0 +1,4 @@
++prog.cob: 11: error: syntax error, unexpected ., expecting ZERO
++prog.cob: 15: error: syntax error, unexpected ., expecting LINE or SCREEN
++prog.cob: 19: error: syntax error, unexpected ., expecting LINE or SCREEN
++prog.cob: 22: error: syntax error, unexpected ., expecting LINE or SCREEN
+./syn_screen.at:442: exit code was 1, expected 0
+260. syn_screen.at:412: 260. Optional SCREEN for BLANK / ERASE (syn_screen.at:412): expected failure (syn_screen.at:442)

@@ -1,0 +1,10 @@
+#                             -*- compilation -*-
+518. run_file.at:444: testing ASSIGN with BASED data item ...
+./run_file.at:481: $COMPILE prog.cob
+--- /dev/null	2019-06-22 09:30:34.000000000 -0300
++++ /cygdrive/c/OC/gnucobol-2.2/tests/testsuite.dir/at-groups/518/stderr	2019-06-22 09:30:34.931342000 -0300
+@@ -0,0 +1,2 @@
++prog.cob: 7: warning: ASSIGN data item with BASED clause is not implemented
++prog.cob: 7: error: ASSIGN data item 'path' is invalid
+./run_file.at:481: exit code was 1, expected 0
+518. run_file.at:444: 518. ASSIGN with BASED data item (run_file.at:444): expected failure (run_file.at:481)

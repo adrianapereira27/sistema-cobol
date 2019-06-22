@@ -1,0 +1,9 @@
+#                             -*- compilation -*-
+692. run_extensions.at:2085: testing SORT ASSIGN KEYBOARD to ASSIGN DISPLAY ...
+./run_extensions.at:2133: $COMPILE prog.cob
+--- /dev/null	2019-06-22 09:33:36.000000000 -0300
++++ /cygdrive/c/OC/gnucobol-2.2/tests/testsuite.dir/at-groups/692/stderr	2019-06-22 09:33:36.014547800 -0300
+@@ -0,0 +1 @@
++prog.cob: 11: error: ASSIGN clause is required for file 'SORT-FILE'
+./run_extensions.at:2133: exit code was 1, expected 0
+692. run_extensions.at:2085: 692. SORT ASSIGN KEYBOARD to ASSIGN DISPLAY (run_extensions.at:2085): expected failure (run_extensions.at:2133)
