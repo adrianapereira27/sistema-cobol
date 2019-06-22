@@ -1,3 +1,2 @@
 # sistema-cobol 
-# ProvaCobol
-.txt contêm as instruções para realização da prova.
+ProvaCobol.txt contÃªm as instruÃ§Ãµes para realizaÃ§Ã£o da prova.
