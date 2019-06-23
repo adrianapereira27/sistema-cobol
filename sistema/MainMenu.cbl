@@ -64,11 +64,11 @@
                WHEN "2"
                WHEN "3"
                    PERFORM B-200-LOOP-SUBMENU
+                           UNTIL SUBMENU-ON-SCR-IN = "9"
                WHEN "9"
                    EXIT SECTION
                WHEN OTHER
                    DISPLAY "Opcao Invalida!"
-                   PERFORM B-100-LOOP-MENU UNTIL MENU-ON-SCR-IN = "9"
            END-EVALUATE.
 
        B-200-LOOP-SUBMENU SECTION.
@@ -85,8 +85,6 @@
                    EXIT SECTION
                WHEN OTHER
                    DISPLAY "Opcao Invalida!"
-                   PERFORM B-200-LOOP-SUBMENU
-                           UNTIL SUBMENU-ON-SCR-IN = "9"
            END-EVALUATE.
            DISPLAY SUBMENU-OPCAO-SECTION.
            ACCEPT SUBMENU-ON-SCR-IN.
@@ -99,36 +97,30 @@
                    EXIT SECTION
                WHEN OTHER
                    DISPLAY "Opcao Invalida!"
-                   PERFORM B-200-LOOP-SUBMENU
-                           UNTIL SUBMENU-ON-SCR-IN = "9"
            END-EVALUATE.
 
        B-300-CHAMA-PROGRAMAS SECTION.
            IF  MENU-IN-WS = "1"
                IF  SUBMENU-IN-WS = "1"
-                   CALL STATIC "CADASTRO-CLIENTES"
-                         USING BY CONTENT SUBMENU-IN-WS
-                   CANCEL "CADASTRO-CLIENTES"
+                   CALL "CADASTRO-CLIENTES"
                ELSE
-                   CALL STATIC "CADASTRO-VENDEDORES"
-                         USING BY CONTENT SUBMENU-IN-WS
-                   CANCEL "CADASTRO-VENDEDORES"
+                   CALL "CADASTRO-VENDEDORES"
                END-IF
            ELSE
                IF  MENU-IN-WS = "2"
                    IF  SUBMENU-IN-WS = "1"
-                       CALL STATIC "CADASTRO-CLIENTES"
-                           USING BY CONTENT SUBMENU-IN-WS
-                       CANCEL "CADASTRO-CLIENTES"
+                       CALL "CADASTRO-CLIENTES"
+      *                     USING BY CONTENT SUBMENU-IN-WS
+      *                 CANCEL "CADASTRO-CLIENTES"
                    ELSE
-                       CALL STATIC "CADASTRO-CLIENTES"
-                           USING BY CONTENT SUBMENU-IN-WS
-                       CANCEL "CADASTRO-CLIENTES"
+                       CALL "CADASTRO-CLIENTES"
+      *                     USING BY CONTENT SUBMENU-IN-WS
+      *                 CANCEL "CADASTRO-CLIENTES"
                    END-IF
                ELSE
-                   CALL STATIC "CADASTRO-CLIENTES"
-                         USING BY CONTENT SUBMENU-IN-WS
-                   CANCEL "CADASTRO-CLIENTES"
+                   CALL "CADASTRO-CLIENTES"
+      *                   USING BY CONTENT SUBMENU-IN-WS
+      *             CANCEL "CADASTRO-CLIENTES"
                END-IF
            END-IF.
 
