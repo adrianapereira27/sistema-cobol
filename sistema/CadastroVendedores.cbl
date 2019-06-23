@@ -1,7 +1,7 @@
       ******************************************************************
-      * Author:
-      * Date:
-      * Purpose:
+      * Author: Adriana Pereira
+      * Date: 22/06/2019
+      * Purpose: Cadastro de Vendedores
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.

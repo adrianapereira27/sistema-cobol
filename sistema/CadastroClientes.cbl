@@ -20,12 +20,13 @@
        DATA DIVISION.
        FILE SECTION.
            FD arq-clientes.
-           01 rw-chave-1.
-               03 rw-nr-cnpj               PIC 9(014).
-               03 rw-cd-cliente            PIC 9(007).
-           01 rw-ds-razao-social           PIC x(040).
-           01 rw-nr-latitude               PIC s9(003)v9(008).
-           01 rw-nr-longitude              PIC s9(003)v9(008).
+           01 rw-registro.
+               03 rw-chave-1.
+                  05 rw-nr-cnpj            PIC 9(014).
+                  05 rw-cd-cliente         PIC 9(007).
+               03 rw-ds-razao-social       PIC x(040).
+               03 rw-nr-latitude           PIC s9(003)v9(008).
+               03 rw-nr-longitude          PIC s9(003)v9(008).
 
        WORKING-STORAGE SECTION.
            77  whs-mensagem                PIC x(200).
@@ -40,10 +41,6 @@
                   88 ws-registro-existente     VALUE "22".
                   88 ws-arquivo-inexistente    VALUE "35".
                03 ws-ds-diretorio          PIC x(60) VALUE SPACES.
-               03 ws-nr-cnpj-scr           PIC 9(14) VALUE ZEROS.
-               03 ws-ds-rz-social-scr      PIC x(40) VALUE SPACES.
-               03 ws-nr-latitude-scr       PIC s9(03)v9(08) VALUE ZEROS.
-               03 ws-nr-longitude-scr      PIC s9(03)v9(08) VALUE ZEROS.
                03 ws-id-opcao              PIC x(01) VALUE SPACES.
 
            01 ws-campos-importacao.
@@ -76,19 +73,19 @@
                07  VALUE "CNPJ:"               BLANK SCREEN
                                                LINE 06 COL 05.
                07  CNPJ-ON-SCR-IN              LINE 06 COL 15
-                            PIC 9(14)        TO ws-nr-cnpj-scr.
+                            PIC 9(14)        TO rw-nr-cnpj.
            05  RAZAO-SECTION.
                07  VALUE "Razao social:"       LINE 07 COL 10.
                07  RAZAO-ON-SCR-IN             LINE 07 COL 30
-                            PIC x(40)        TO ws-ds-rz-social-scr.
+                            PIC x(40)        TO rw-ds-razao-social.
            05  LATITUDE-SECTION.
                07  VALUE "Latitude"            LINE 08 COL 10.
                07  LATITUDE-ON-SCR-IN             LINE 07 COL 30
-                            PIC s9(03)v9(08) TO ws-nr-latitude-scr.
+                            PIC s9(03)v9(08) TO rw-nr-latitude.
            05  LONGITUDE-SECTION.
                07  VALUE "Longitude"           LINE 09 COL 10.
                07  LONGITUDE-ON-SCR-IN         LINE 07 COL 30
-                            PIC s9(03)v9(08) TO ws-nr-longitude-scr.
+                            PIC s9(03)v9(08) TO rw-nr-longitude.
 
       * LINKAGE SECTION.
       *     01 PARAMETRES.
@@ -96,8 +93,12 @@
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE SECTION.
-           OPEN EXTEND arq-clientes.
            OPEN I-O arq-clientes.
+           IF  NOT ws-operacao-ok
+               OPEN OUTPUT arq-clientes
+               CLOSE arq-clientes
+               OPEN I-O arq-clientes
+           END-IF.
            PERFORM B-100-LOOP-MENU UNTIL OPCAO-ON-SCR-IN = "9".
            PERFORM B-999-TERMINAR.
 
@@ -121,6 +122,7 @@
            END-EVALUATE.
 
        INCLUIR SECTION.
+           DISPLAY DADOS-SECTION.
            DISPLAY CNPJ-SECTION.
            ACCEPT CNPJ-ON-SCR-IN.
            DISPLAY RAZAO-SECTION.
@@ -130,8 +132,16 @@
            DISPLAY LONGITUDE-SECTION.
            ACCEPT LONGITUDE-ON-SCR-IN.
 
+           WRITE rw-registro.
+
+           PERFORM B-100-LOOP-MENU.
+
        ALTERAR SECTION.
 
+
+           REWRITE rw-registro.
+
+           PERFORM B-100-LOOP-MENU.
 
        EXCLUIR SECTION.
 
