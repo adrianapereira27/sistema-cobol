@@ -70,6 +70,7 @@
                WHEN OTHER
                    DISPLAY "Opcao Invalida!"
            END-EVALUATE.
+           MOVE SPACES TO MENU-ON-SCR-IN.
 
        B-200-LOOP-SUBMENU SECTION.
            DISPLAY SISTEMA-SECTION.
@@ -98,29 +99,34 @@
                WHEN OTHER
                    DISPLAY "Opcao Invalida!"
            END-EVALUATE.
+           MOVE SPACES TO SUBMENU-ON-SCR-IN.
 
        B-300-CHAMA-PROGRAMAS SECTION.
            IF  MENU-IN-WS = "1"
                IF  SUBMENU-IN-WS = "1"
                    CALL "CADASTRO-CLIENTES"
+                          USING BY CONTENT SUBMENU-IN-WS
+                   CANCEL "CADASTRO-CLIENTES"
                ELSE
                    CALL "CADASTRO-VENDEDORES"
+                          USING BY CONTENT SUBMENU-IN-WS
+                   CANCEL "CADASTRO-VENDEDORES"
                END-IF
            ELSE
                IF  MENU-IN-WS = "2"
                    IF  SUBMENU-IN-WS = "1"
                        CALL "CADASTRO-CLIENTES"
-      *                     USING BY CONTENT SUBMENU-IN-WS
-      *                 CANCEL "CADASTRO-CLIENTES"
+                             USING BY CONTENT SUBMENU-IN-WS
+                       CANCEL "CADASTRO-CLIENTES"
                    ELSE
                        CALL "CADASTRO-CLIENTES"
-      *                     USING BY CONTENT SUBMENU-IN-WS
-      *                 CANCEL "CADASTRO-CLIENTES"
+                             USING BY CONTENT SUBMENU-IN-WS
+                       CANCEL "CADASTRO-CLIENTES"
                    END-IF
                ELSE
                    CALL "CADASTRO-CLIENTES"
-      *                   USING BY CONTENT SUBMENU-IN-WS
-      *             CANCEL "CADASTRO-CLIENTES"
+                         USING BY CONTENT SUBMENU-IN-WS
+                   CANCEL "CADASTRO-CLIENTES"
                END-IF
            END-IF.
 
