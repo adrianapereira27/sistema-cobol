@@ -115,13 +115,13 @@
            ELSE
                IF  MENU-IN-WS = "2"
                    IF  SUBMENU-IN-WS = "1"
-                       CALL "CADASTRO-CLIENTES"
+                       CALL "RELATORIO-CLIENTES"
                              USING BY CONTENT SUBMENU-IN-WS
-                       CANCEL "CADASTRO-CLIENTES"
+                       CANCEL "RELATORIO-CLIENTES"
                    ELSE
-                       CALL "CADASTRO-CLIENTES"
+                       CALL "RELATORIO-CLIENTES"
                              USING BY CONTENT SUBMENU-IN-WS
-                       CANCEL "CADASTRO-CLIENTES"
+                       CANCEL "RELATORIO-CLIENTES"
                    END-IF
                ELSE
                    CALL "CADASTRO-CLIENTES"

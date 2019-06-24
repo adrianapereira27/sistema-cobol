@@ -8,6 +8,10 @@
        PROGRAM-ID. CADASTRO-CLIENTES.
 
        ENVIRONMENT DIVISION.
+           CONFIGURATION SECTION.
+           SPECIAL-NAMES.
+               DECIMAL-POINT IS COMMA.
+
            INPUT-OUTPUT SECTION.
            FILE-CONTROL.
            SELECT arq-clientes ASSIGN TO DISK "clientes.dat"

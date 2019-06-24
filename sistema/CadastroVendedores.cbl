@@ -6,7 +6,12 @@
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. CADASTRO-VENDEDORES.
+
        ENVIRONMENT DIVISION.
+           CONFIGURATION SECTION.
+           SPECIAL-NAMES.
+               DECIMAL-POINT IS COMMA.
+
            INPUT-OUTPUT SECTION.
            FILE-CONTROL.
            SELECT arq-vendedores ASSIGN TO DISK "vendedores.dat"
